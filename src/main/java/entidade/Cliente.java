@@ -2,11 +2,30 @@ package entidade;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CLIENTE")
 public class Cliente {
-	private String cpf;
+
+	@Id
+	@Column(name = "CPF", nullable = false)
+	private String cpf ;
+	@Column(name = "NOME", nullable = false)
 	private String nome;
-	private int idade;
+	@Column(name = "SEXO", nullable = false)
+	private String sexo;
+	@Column(name = "INTERESSES")
 	private String interesses;
+	@Column(name = "IDADE", nullable = false)
+	private int idade;
+	
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Contato> listaContatos;
 
 	public String getCpf() {
