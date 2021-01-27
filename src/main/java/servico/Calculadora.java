@@ -6,6 +6,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import util.JpaUtil;
+
 @Path("/calculadora")
 public class Calculadora {
 
@@ -13,6 +15,7 @@ public class Calculadora {
 	@Path("/")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String ola() {
+		JpaUtil.getEntityManager();
 		return "Funfando";
 	}
 	
