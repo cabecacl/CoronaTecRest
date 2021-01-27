@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import util.JpaUtil;
+import entidade.RetornoCalculadora;
 
 @Path("/calculadora")
 public class Calculadora {
@@ -15,15 +15,18 @@ public class Calculadora {
 	@Path("/")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String ola() {
-		JpaUtil.getEntityManager();
 		return "Funfando";
 	}
 	
 	@GET
 	@Path("/somar")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String somar(@QueryParam("valor1") double valor1, 
+	@Produces(MediaType.APPLICATION_JSON)
+	public RetornoCalculadora somar(@QueryParam("valor1") double valor1, 
 						@QueryParam("valor2") double valor2) {
-		return "Resultado: " + (valor1 + valor2);
+		RetornoCalculadora retorno = new RetornoCalculadora();
+		retorno.setCodigoRetorno(0);
+		retorno.setMensagemRetorno("SUCESSO!!");
+		retorno.setValorRetorno(valor1 + valor2); 
+		return retorno;
 	}
 }
