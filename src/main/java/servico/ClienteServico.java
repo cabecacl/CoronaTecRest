@@ -75,6 +75,29 @@ public class ClienteServico {
 		return retorno;
 	}
 
+	@POST
+	@Path("/inserirCliente")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public RetornoCliente adicionarContatoCliente(Cliente cliente) {
+		
+		RetornoCliente retorno = new RetornoCliente();
+		retorno.setCodigoRetorno(0);
+		retorno.setMensagemRetorno("SUCESSO!!!");
+		
+		/**
+		 * 1 - Verificar se o cliente existe
+		 * 2 - Verificar se no cliente, existe algum contato
+		 * 3 - se existir contato, deve verificar se algum contato a ser
+		 * inserido já existe nesse cliente
+		 * 4 - após validado que não existe os contatos na base, inserir
+		 *  os mesmo
+		 * 5 - Retornar o retorno preenchido
+		 */
+		
+		return retorno;
+	}
+	
 //	@Override
 //	public RetornoCliente adicionarContatoCliente(Cliente cliente) {
 //
